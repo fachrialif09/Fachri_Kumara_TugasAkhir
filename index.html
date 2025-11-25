@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Karya - SMK Muhammadiyah 1 Yogyakarta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #3b82f6;
+            --gold: #ffd700;
+            --dark-gold: #b8860b;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .logo-border {
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            padding: 5px;
+            animation: rotateBorder 4s linear infinite;
+            background: white;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+                border-color: var(--gold);
+            }
+            50% {
+                border-color: var(--light-blue);
+            }
+            100% {
+                transform: rotate(360deg);
+                border-color: var(--gold);
+            }
+        }
+
+        .logo-border img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .school-name {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: transparent !important;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .navbar-nav {
+            gap: 10px;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Jumbotron */
+        .jumbotron {
+            margin-top: 140px;
+            height: 100vh;
+            position: relative;
+        }
+
+        .carousel-item {
+            height: 100vh;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .carousel-caption {
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        .carousel-caption h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            min-height: 100vh;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--light-blue);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-left-color: var(--gold);
+        }
+
+        .detail-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .detail-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Carousel untuk produk */
+        .product-carousel {
+            height: 100vh;
+        }
+
+        .product-carousel .carousel-item {
+            height: 100vh;
+        }
+
+        .product-carousel img {
+            height: 100%;
+            object-fit: contain;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        /* Kesimpulan Section */
+        #kesimpulan {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: white;
+        }
+
+        .kesimpulan-img {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Referensi Section */
+        #referensi .carousel-item img {
+            height: 70vh;
+            object-fit: contain;
+            background: var(--light-gray);
+        }
+
+        /* Thank You Section */
+        #thanks {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #fbbf24 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thanks-content {
+            text-align: center;
+            animation: thanksAnimation 4s ease-in-out infinite;
+        }
+
+        @keyframes thanksAnimation {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .thanks-content h2 {
+            font-size: 5rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            animation: zoomInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .thanks-content p {
+            font-size: 2rem;
+            color: white;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Dokumentasi */
+        .doc-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .doc-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .doc-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .doc-item img, .doc-item video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 40px;
+        }
+
+        /* Contact Person */
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-border">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUTExMWFhUXGB4YGBgXGBYXGhodGBofGBcdGBgbHyggGxslGx8XIjEhJSkrLi4uGB8zODYtNygtLysBCgoKDg0OGxAQGy8lICYtLS0tMjAvLy0tLS8tLS0tLS0tLS0tLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBEQACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAABQQGAgMHAQj/xABNEAACAQIDBQUFAwcJBQgDAAABAgMAEQQSIQUGMUFhEyJRcYEHMpGhsUJSwRQjYnKC0fAWM0NTkqKy0uEVJIOTwhc0NWNzs9PxRFTD/8QAGwEAAgMBAQEAAAAAAAAAAAAAAAUDBAYCAQf/xAA6EQABAwMDAQYEBAYBBAMAAAABAAIDBAUREiExQQYTIlFhcTKBkaEUscHRIzNCUuHwFRZDYnI0kvH/2gAMAwEAAhEDEQA/AO40IRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIWnFYlI0Z3YKqi7MdAAPGhC55hfaehxZDJlwp7qvY5gQffYfdPhxHHxqTujjK81DVp6romGxKSKHRgysLhlNwR0IqNerbQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIWjF4yOJc0jqi+LEAePOhCp21Padg47iISTMOGUZUve3vNr6gEV0Gko45XON4d4sTjWvM2VAbrGuij8Sep+VM6agLiC/hLKm4NYNLDkpWVFrU2dCxzNGNkmbUPa/WDume7u8mJwLExHMh95GuVPX9E9RSSoonRn0T6mro5Rh2xXWN3d+sJiQBn7KS2qSEDzytwYcevQVRLSFeVnBrlC9oQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQlu2du4fCrmmlVPAcWPko1Ne4QqJtL2ri9sPhyf0pDb+6t+nOpGwvdwFw+RjBlxVbxu/m0ZRbtViGo/NqFJv1NyPQirbLfIeRhVH3CFvByq/ipJJWzSyPI3izFj8Satx23HxFVJLr/aFgqAVejpo4xsEulq5ZeSs6nVVFq8yvcIoxthAJHC1PCDVOahY/cbJhBcZI9nbhNcFvPtCBckeJcLyByyWtoAM4Nh0FLJKCRvRNY7hC/qnez/afjEI7VI5ANDoUY9bjS/pzqs6Et5CuNex3BXQN3d98Ji7KG7OQ/0clgb/AKJ4N6a9KhIwulZhXiEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCFSN/d9hhQYYCGxB4niIweZHNvAep69sYXFeEhoyVyOeR5XMkrF3Y3JY3J/jwpxT0HV6T1Ny3xGvQKZtY1vASh8jnHLiiulxlFC8RQhFGV6E82tsox4aB7am+f9vvrfyFxWYtV3FTcJoeg49gnVbQGKmjk+qR1p0kRQhFCEGvHNa4eJdskc05BWpofCl09A127E0p7k5pxJuFety/aC8RWDFktHewlJJZL8M5+0vXiOtqTyRFpwU6ZI14y1dbRgQCDcHUEa3qFdrKhCKEIoQihCKEIoQihCKEIoQihCKEIoQoe0tqQQLmmlSMcixtfyHE+le4QqZtT2pYVQywrLI1u62UKl+V8zZrfs16GEoO3K5UGLsZHJZmJJJ1JJ1JNO6GnAGtySXGqJPdt+azKmmQIPCT6SvK9Xi9oQEyxWzCuHinW5Vrh+hzEKfIgW8wPGkdNdg+tlpX8jhM5aEtp2TN68rXJFAhiRjLLJJEswSPsogEbUXeVrE9BroeFKpb3Vvc4RgNAOMnJ3HsmkNog0tc4k5GfJOcfg8LBhlxDYaQsxVRE8hDEuwUDusVvbXSkDbvcZ6l0He4AzuAmYtlIxmsM+6j7W3nw7YeG8EkhlGYxCVhks/ZpdvEuLAW5GuaSCphqHPY4Nx1xz5qWdsUsYje3I91ltjA4KKaPDl5VkkBbQoyIo1vKWsQuja/om9XaK+3N7HSbOA8xjP0VOa0Umw3BSjEYePjDOk65sncDg346aFT6H/TS0F5dNkSx6CBnnZJay19zux2c7BbNsbP7BljJu2QM3hck3t0Gg9KuWq4CujfIBtqICqV1L+HeGegKgU0VFe15lCwmjv51UqoGysyOVfoql0LwDwV1H2Y71RmD8nnlVXjNkLsBmTiBcnXLqPLLWee3BWlHougRyqwDKQQeBBuD5EVwhZ0IRQhFCEUIRQhFCEUIRQhFCEUIXPt9/aCISYcKVeT7T+8qdBbRn+Q+nbW5QSAMlcuxU0szmSZ2djzY3Pp4DoKbQW/Iy9Kai6BvhYvAgHKmLKeNvASl9VK/ly9qbbgKAnJyrJsDAR4mF420eNro3MBhwPiLg6daxt+uE1sq2TN3a4bj2/VaC20sdZA6N3xDhI8dg3icpILEfA9VPMVpaGvhrIhJEcj8vdJ6imfA8sfsQtFXDwq4C6HsfDI+DjRh3WjsfXiR1vr518eu1VJBd5JWncO/0ey31BC2Whaw8EKt7aw0eWJGlwjdinZFJoDM107oN0OZdADbQXN/JtSx1Ez3PjjcQ45BBwN+m+yjknhiYGOcNtsLTsyHCiPC4bPPJ2U4kXuqqu5bughjdUBPDjU09trozJUOa0DTjnJA+ShjuFK/EQJO/kp67q4fDoHbtcsconYkxksV0RT+ipJsBzalsNZJVydzFgkjSOR7lX5msiaXvzjOUlxmAwc35TJJK7zy37NpEdVjNu4LJmFgbC55DxuS2FFcINDWxjSOcb5VAXCklJy7c+mFat34A8eGzMjth0s2Qhlz2CqbjnYFrEAgkUhuDpaQyN3Gs9djhXoGxz6SN9KSb6n/ef+Gv1Y/iPjW07Ggi37/3FZm/kGq+QSGtYkYGVY93d3e0tJMCI/sjgW69F+v1xt+7RiA9xTHLzsfRaC12oyfxZh4enr/hJdoTh5HcAWLG1vujRQOmUCtLb4zHTMa7c43/ADSeqeHSuIUJoAa8fQRuOVaiucjQGnhS9l7UxGFbPBIy+IGqn9ZDof8AU0vnoXR7jcJlT18cvhOxXVNzvaBHiikMo7Ocjjp2bkclN7hiNbH0vS8twr6u9coRQhFCEUIRQhFCEUIRQhc79qG9hiU4SL+cdbuwPuKeQt9ph8j1FdsbkrwkAElctiitT+lpQwancrPVtaZTpbwtlXkuTJtjuYlmj76Ea295SNCCvhfmOWulJheYWVJppvC4ceRHumH/AB0johLH4gl1OA4H2VAjBTbdjaAhmBb3WGUnw5g+V/qazvaW3OrKQhnxN3TS0VQgn8XB2Vt3j2X28Wg/OJqvXxX1HzArA9nro6gqsO+F2xWoutGKqHLeRuFz5IySFAJJ4AC5PkBrX1mWqhjZrc7AWIZC+R2lo3V83aSaODLImXKSRmYCynXUC/O/G1fKr/LR1VYZIXE58h1W3tMU0VPokGEv2vgsGR+VyznJIyqDFYqxPdWxAYnhxvyNW6G810DPwkDcaRnxcriotlPK8yvPKxwybPT8olVZM2EY57s97rc90Zspvaw6iuKi53SXRG9wxJ6D77LqK30bDqa3cLftLa+HaDDl+0yYpkUC+oDEEFrk2AOW9vEVUpGVMFQ8x6dUe+cfkrNQI5Y8PzgpdtzZOEgYBppULAt/NmVVAIBLFFuouQLk09t/aW4StLixrgPXGfZKp7JTDgkfdWDd/DdjCqqRIGJcOhHeBtY2vwtbgTSG8VP/ACFR3jvDjbB6fNMaCl/CQ6B4uuVSNrSM00jOCpLE2YEEDguh6AD0r6ZZ+5ZSMjjOcDosZcBK6dz3gjJUvdzZfbyi47iat4HwX1+gNUu0d1FFTEN+J2w9PVWLTQfiZd+Buf2Vu3j2iIYW+84KoPManyA/Dxr59YLc+vqw48A5cfmtTdKtlNAQOTsFzqvsYGAsAUULxeihGVrZSCHUkEG4I0II4EHkaW1lHnxNTqhrjkRvK6x7Ot9DibwYhh2w1Q2t2gAudOGYceo15Gkbm4TpX2uUIoQihCKEIoQihCW7w7YTCwPM/BRoObMdFA9flevRuhfP0+IeaRppDdmJYnqfDoOA8hTWgp9R1HgJZcqnQ3Q3kr2nSzyKEKybl7QySGJjpJqvRgPxH0FYztfbTNCKiMeJvPstFYavRIYncO490529u6koLxgLJx00DdG5X6/Gs1Yu0ktI4RzHLD9Qm1ytDJ2649nfmqLJGVJVgQRoQdLedfUo545WB7TkFYxzHMdpcMEK87vY1zFGktkLErGWPecKM2i8bgA6nkAda+V3unpW1T3weIDcgcA+63Vskm7gCUYPT1C1rtbDxNC0YRRPM0UhNlkz3ZdRz/OCxHLMOFVpYamdrmyEnSAW44wrDBFGctGMndKd3dv/AO8SwyyF0mllVSQxET9oyrEXIy2aMBlAOliLairNZQgxskYMFoGfUdSiOXDy08FKMNsad8KmGVGZOzlmQ66TIjQ5OmZyJBc/abwq8+aFspkJwdmn2PVR6XacdNym3+yJjKSwVFlmYzKzICY1ZZoja9yM4dP2z51C6djRtvgDT7nYo05PzWiPdzETQqhmWJo8MIUQdlIWPvvcg93vKgBU6ZAeGlcmtiik8LS7JyTg7dF13ZI3OMJ2cXPHOZZMJM+bDxoBGI2Ae7NKpObTUqM3Du8aoGGJ0WhkgGHE75GykDzkEjOyQ4rCvHFqO9hI4FAQ/wBJNiFleNP2FjQdGHI1fjka5+3Dy4n2AxlRubgb9E22jtHs1jhxSDETSyKWQWCwLK4RbOBcWJCg8WNzoKr0rH6jLTOLGtGx/uI9ESta5uJBklO9nwRQEwxkH7ZW93AJsGI4sNLfs86pVVRNcMSzHfjPT/C7p6eOmaWxjblUjb20GmlZjcBTlVToVA8Rybmf9K+m9n6GKkpGhhyTuT0WKulQ+ac6tsJfTxLEw2dsaaaxRe799tF69T6Umr79R0Q8bsnyCY0tsnqMFjdvNStsbLiwyBSxeZtdNFQX424kngL9dKo2m61FzkL2t0xj6kqxXUUVIwNJ1PP0CS1p0nyvMLinglSaM2ZGDD04jyPD1pFXU/duz0K0dvqe9ZpPIX0PsrHpPEksZBVxcEa+Y8wbj0pYRhMFLoQihCKEIoQom09pRQRmSVwijmefOw8T0FCFxHe/eiTHy21SFT3E/wCpvFvp8auU1MZDhVqmpbC3J5SZRbQVoI2NY0NCzUkjpHZKK7yFFhFe4Xi9RiCCDYjUEcQeVq4kjbI0seMgrpri05HKve7m8AmAjkIEoHHgHH+bxHr5fLu0HZ11K8ywDLD08ltbVdWzDRJ8X5rRvOiopxiwiV0KjKWsGuyrmbldQdPQngBUVDVTtYKIvLWnf/AP5q1LSROf32BkJXtLaSlHbtDaS2JwjNmLLNHo8FuObMLZPCRxyr2OB+sbbjwv9QeHfRS6hjb3Hp6Jl/J+N5cQ7RqDiEQ5lt2sb274DEWUCyMPE30NVxVOjjZh2A0kb8EdPfyXYYCScc8+6UYvassI/J1UII2Pv2lYtmL5iSMupOYWXTStbQ2KGqb+Je8kuHTYexWdq7tLE8xtbgDz5VqngTEYUkC/aR3FyWsSLgXJ8dPjWPjmfRXEMdw1+MdMJ24CopC4ckKk7toBiYbADveFuRr6Ne2t/wCOkc0Y2WRtrnfi2AnqrTv0f93VSAQZBe/RWNYrseDLWO1b7dVob+4spxp80p3LhZpWOZgiJqAzAXOi6A8gGp32uMFPC3SwanHyHRL7EZZZTqccBT9u7YWKYRlBKqlHN+6wcHMpuotpZTYildosb62l79p0HcDqCPmmFddW083dkZHPzUNdiRy9niIXmztOksgka3aiN81svuEoAAuW2gqrLJLTPdTyhoABAI6ZVyJzJ4xIzK9VcWsmW6CXGnM/ESYZI7XAOoYKhCjhZ3J1vVdxpu6zg6Y+PJxP+/RT+MHHUpxvLgMO4UyMI3ZgiPbixByq54EG3O2ugOuvFlu1XTSHut2jcj09FBX0EU7MO2Pmlmxt1+8TPbunRAbg+BJ+6fDnztqKf3jtY50IbTAjUNyen+UporEBIXTb46eaf7U2pHh0u1r27qDibeA5DrwrK2211Fzm2zg8kp1WVkVHH+QXOsViGkdnc3Zjcn6DyA0r7DSUkdNC2Jg2H3WCnmdM8ud1WoDWw4+FTvkYwZccBQtY5xwBlGJgYXVgVbwIsR5jlVeRrKiIlpz5KzTyOp5QTsrp7Lt6RC35JLfK7fm25Kx4qejH5+dZ+RhacLUNIcMhdcBqJer2hCKELmG8PtR1KYSM34F5QRY9I/G9+PhwNSNjJ4XhIAyVRdrbUxGKfPiJCx4AaADyUaCmcFvJ3cllRcmt2j3KjAW4U2YxrBgJHJK6Q5duskcggjQg3FD2B7S08LlrtLtQVp2TDhcWMrxiOYDXJ3Q36Sjh5i2lYS6z3O0v1xu1RHz3x6LTUUdHXt0vGH+nX2WvaO6LrrE2f9FrBvQ8D8qlt3bKKQhtQNPr0UdX2fe0aoTkeSrckZUlWBBHEEEEelbSKdkzQ6M5BWfkidGdLhgrLDTZHVrA5SDY8DbWxqOtpzUQOizjIUlNN3MgfjOE2n2PndzhmZY8araEF4xJlPaRzKPdvZirjUMGGoIFfOHSdz/Dnb4oz88eY8/ZbmNwkAkjOxT6TBTJA7Q6SPleTKbgsFAkMII0J435621N6rUc9M+ra2pO2+PnxqXlW2ZsJ7keJKN09rdnIY3PdkPEng/C5J8eB9K03aWzMnphNTjdg6dQkNpuDo5iyU7O8/NMt8tl5l7dRqos3VfHzH0PSk/ZG7d1IaSQ+F3Hur9+odbRO3kc+y2bk4vNC0Z4o2nk2o+eaoe2NL3VW2dvB/MKSwT64TGeiU4bCZNpBOADsw8ipcD8KfVFZ33Z8yf+OClUUHd3QN/8splv2fzcY5Zyf7pt9TSXsQB+IkP/AI/qmHaM/wAJnupG6GHEeG7RtM5LHoq6D6E+tV+1M5qrh3DOG4HzPKnskQhpTIeu6q2EgbF4g8RnYsx+6t/rawHW1bWqqWWm3DzAwPUrOwwur6o+pyVc9tYxMPBYAcMsa20uBpp4Dj/9188s9JNc67U4nGcuWrrqhlFT4HPASTd3bxMgWVczEZVkC3ew1s9hci+t+XE+NP7/ANmxDEZKc4GclpO3yS213d0rhHIN/NNZoXmnzSLaGEgxJp+dktcSH9Fb2W/O7HgKzMeIYu7YfE74j/aPL3T93idvwFH2xvEsN0js8v2j9lT+JHh0114vLX2clrHCWbLY+g6n/wDUnr7wyAGOPd3X0VUjimxMhsGkc8T9LngBW6kmo7XDpJDW+XVZhrJ6yTPxFWjZu6KAXmOc/dUlVHqNT8qw9y7YyvdopRgeZ5+XktHSWCNozNufJbNs4+LCLkhRFkbhYDuj7zePQGo7PQ1d2l72oe4sH3XdfUw0LNETRqVIkkLEsSSSbkniSeN6+mxRtjYGNGAOFj3yF7i52+VpmjvqKo1lLr8TeUxoa3R4H8Lqns934SREw+Je0w7qsx0k+6L8mHDXjpzNI3tIKfggjIXQq4QihC4b7StmjD45igAWVRKAPE3Df3gT61Zp5Cxwcop4+8YWqv3rTNdqGoLJuBaS1FerheiheqT2TxrHKCRnLFCNCMhynXzpW2ohq5ZaZ4BDcZ+avuhfBGyYHBPHorJsve7gs4/bUf4l/d8KyF07HEZfSu+RTujv/DZx808xODw+KQE5XHJ1Oo8iPoazNPWV9plxu30PBTmSnpq5mRv6hVPau7EsV2S8idB3h5rz8x8q3tq7V09Thkvgd68LMVtkmh8UfiCgYLassSSIhsHFud1PMr1I0+HhTGts1NWytmdvj7qtTXCWnjMfn9lbN29viYCOQ2lHA8A9vDwbpWG7R9n30jzNFuw8+i0dqurZmiOXkfdRd6dgFrzRDXi6jn+kB4+I5+fG52b7QacUtSdjsD+ir3e1k/xofmP1U/dranbxZX1dRla+uYHQE+N+B6+dK+0NuNDVd7D8J3GOArdpqxUw92/kbH1SrZ+HOExwT+jlBVT0Juo8w1l9etO6ycXez94PjZyl1PGaGv0n4XJjtHC2x2Gk+8HU+aoxHyPypRQVOqz1EB6b/kmFVDivilHXb81D34QsYEXixYAdTlAq72OeImTSO6D8lWv7C90bB1Km7zTCDCdmumYCMeVu9/dHzqlYYvxtyM8nDSXHP2Vi5yfhqMRN5OAtm7uzRh4Sz6OwzOT9kDgPQcepNRdoLi+5VndR7tGw913a6QUsGt/J59FW8UZcdOezHdGi34Kvi3U8bcfhWwpfwthogZT4jz5k/skM3fXOfwjw/kFatm7NhwqE3F7d6RtP/odB86xFfcqq7TaGg4zsB+q0lLSQUMZJO/UqubW260rdnhw2U3GlyzX45QPdB+Plc32NsskVFD39aRkefHp7pFXXSSod3dPnC37J3SJs05sPuKdf2m5eQ+NU7p2vYwGKjHpk/opaOwud4p/orG7wYdBcrGg4Dx8hxJ+dY9sdbc5erz9vqn5fT0bOgAVc2pvcTdYVsPvtx9F4D1v5VsbZ2Oawh9U7J8gs/W38kFsIx6qryyliWdiSdSxNz6k1uIoo4GBrNmhZx7nyuydypuP2LiYUDywSIp+0RprwzEe6ehsajjrInnAKlko5WDJGygGrSrLXJEDrwNU6ijbJu3Yq/TV74tnbhXLdv2jT4e0eJHbJ9+/5xR5nRh52PWkc9O6I4cn0M7Jm6mK7/wAvcP8A1WK/5D1BhTJF7acIOzw8vNXaO3Ih1zfLJ8zXTELmcJ0rR0T9UIWZuDNMx9VtjQkgDidBVh7wxpcTwqbW6jgJo+xZOxV1Qh1ZkkU2B+8rcfukD4Csu2+MjqpGOOWkZb78EJ+61OfCwtG/B/f5JxvFstiIYohdYUNySL8BqRz0Uk9WHjSKx3JkUktTMd3nYfNMbhQukYyOMbN5VVnhdDZ1ZT4MCv1rfQVUMzcscD7FZSaF8bvECFtwWNkiOaNip524HzHA1HWW+mq26ZmgrqnqpYHamOwrXsve1Wsswyn7w1X1HFfmPKsBcux0sWX0pyPLqtPR36N+GzbHz6KftHYcGIGcWDHUOlrHzto3nx60toL7W21/dyZIHQq7U2ymqxrbjPmFUNp7Hmw5zEXUHR0va/LXip8/St/QXyiuLNOdzy0rL1VuqKN2rHHUKz7t7fEwEchtKOB5Pbw/S6eo6YntD2edRuM8Ayz8lorXdmzju5OVq2rs5oJfyuEXAuZU8VOrEdOfQgGpbdc2XCmNvqjv/SfVR1VG6ll/FQ8f1BN5tk/lsaGMkEEOj293nrrzHLy8KoWr8TSzviY3UCC0+SuVbI6iNjycY3HmrCN3AxVpG1U5lsOBKlePkTVuCyvaHAvwHDBAXj6lrtJxxwvMVulE7pIWOaO+U8hfoDryPpVqG2PggfFG8gO5Ucr2ySNke3cJTtbdiRpo5Ws0cQJCgH3iRYkeAsDpzFVWwz0FJJHG3JfyR5L17WVM7HvOAOiW7Ww7znsVJWPjI/M8wi+PiT5cdRS+2VENC01D/E/+keXqVLWRSVH8FuzOpWWIxMGDjCgW+6g1Zj+OvM/6UQ01beJ9bjt1J+EBD5qe3s0ge3mlDbOxOLIac9lFyj+18PHq3oKe/wDJW+zMMdKNcn93RLTSVVe8OmOlvQeacwwYfCpfuoObE95vXiT0FZ2ae4XaXq4+Q4CasipaFmTge/KQbT3uJusC2H321PovAevwrVWzsa0APqjn0H6pJV9oHHwwDHqf0VannZ2zOxZjzJJPp+6trFDBSs0sAaAs9JJJM7LskqZhdi4iT3Ymt4sMg/vWv6VRqb/Q0/xyZ9BurUFsqZfhb+iYwQjAtnmhSaQrmh7zZEdTqXGmfiptyt1uFLr6ytB7nOArb6U0ADpRlx+y2S78Y5mDdqoHNOzTIw8GuCxH7VVtZyqxucuePkq9iJMzF7IuYk5UGVV1tlVeQ8NTxrU257nQguVSoIc7K1Xq4SGgkqFrS4gBONwtljFY6NWF0S8rDolrD+0VHqazc8pe4uK1kEQjYGhd4tVXKmVO9rUYOzySNVkQg+FzY29CRXTeUBcbwx0NPbcfAQkF2biQH0W0UwIyErCu+7L/AO7hXF7DvDjmjcsVI8jnX9lulfK7y0fjCW7b7ehHI+ey31u/+OM+SkxTqcOWzFVN80jEqzsTbjyXNYZjyB4CxqoWOFWBjLugHAH7qyHN7vJ4TYZHH2WX0YUof+Jgd/U0qUGGUY2KWYvdvDP9jIfFDl+Xu/KmlL2nuEH9eoeu6ozWWlk4bg+iT4vc08Y5Qeji394furSUnbZhGKiPHqEpm7OOH8t2fdQosJjsKSUVrcSF76HzUa+thTGWrs91Zh5APrsfqqjYbhRHwg4+oTzZm9Eb9yYdm3A39w+p4evxrMV3ZienPe0jtbfTn7JxTXiOXwTt0n14Xm0t2I378BEbcRb3DzBFtV8xp0rqh7TTw/wK1upp235CKqzRv/iU50nn0KebrQTzXWdMpQ2ZhazjkR5/xzAhfbKeepD6V2Wcn09FPDUTNi0zDxD7q8QRBAFUWArSRRNjGloVYnJUPam2YYP5xwGPuoNXb9VBqfSvXytZyd1JHC+TgKHNvHHFCsk6tG7e7Fo0h17tlXmRbTlexrgzADLlI2mc9xDN8JuJlvluLkXtzt5VKSFBgpDvFs1wpeHKp53FwNfesOPPSs7cbZC1/f4OByArUM8mNAO5VXTCQYe80r3c8ZJD3j0UcugWlz6yrrsQQN0s8hsPmV0IIKb+JKcu8yoWJ2ziJNMNA9v6x1yjzUGw9T8KY0tmoKfx1soz/aD+aqTXCpl8NNGR6n9FAG6+IlbPPKL+rny5AemlNT2qoKNvd0kf6D91RFkqZjqmf+p/ZMsLulh197PIepsPgtvqaT1XbCulz3eG+3KYQ2GnZ8ZJTfDYOKMdxEXqFA+J50hlrqyqd43ucmjKenhGzQFoxO2cOnvSpfwBzH4Lc1NT2SvqD4YyopblSxcvCrW8e28POmVVcspurWCrrxBvrYjoOArXWjs1WU7i57gAeQs9crnTVLNABz0KVrsLFHDnE9kREPtEi+X7wXiU69b8NaaspB3uh7kpFE7R3nRLLVqWMaxoa3hUXEk7rCc6VXrH6Yirlvj1TDPRdO9jWz7QzTkau4QG/JBc6eZrOOK05XR65Xip3tX/APDn/XT/ABCum8oXGMNzp5bfhd7pHd/jb7LeKYu4SlvKt2zsR2OFVxa6xmVCeBUAPiIieNwQ5+B1ymvltW0T1bgeM4d6Ho4LeQ5jhGB0/wBC27UiMeEa/eIUALYKI1ZgvAcWtoSdSb2sL0W9wkuLWjYZ3PVxH6Lyty2lcTzj81To3Km6kqfEEg/EV9Nkp4pBiRoP0WHbI9nwkhMsPvBiU4SFh4OA3zOvzpNUdm7fPywA+myvRXaqi/qz7ppht8nH85Ep6qSvyN/rSKp7ERHeGQj33TSHtE//ALjM+yaYbevDt72dPNb/ADW9Ip+x9fHvHhwTKG/Uz/iyFN7TC4jS8UnQ5SfgdRS7u7nQHOHN+qtaqKpH9JWWH2WsX80zIOOQnMmvRtR6EVHPcnz7TsBPnwVJFRsi3iJHzyrxsrD5I1HMi58z/HyrXW2mbDAABzuVRmeXuJWvaOMlWSNI4s4e+Z8wAjA4Ejib6/Crj3OBwAhjGFpLjj9VV5BiTLIzYnDARpeWWJFMqqMxyd6+UWzEE+J41V/il27hjqQN1dBhDQAw5PAJ2Uk4CX/8VY1LoC2JlYyzd4XtlI4+GuXwHKuy1x+AfPqoxIzGJSf/AFGw+qWja0I2gJ5RIMkSoCVykZjYySrpkU5hZTrrcgaVX71om1P8laEL3UuhmNzn7cBX5rMLcQavvaHtIPBSgZBVJxkMccjM2QFSRma1wPDMeAtbTrWFmiqmyuhjzjO2P8Jo10OkPfjKW4neTCp/Shj+hdvmNPnVqDs3cJz8GPfZVpbvSx8Oz90qxO+a/wBHET1cgfIX+tPabsQ87zSj5JbN2jA2jalWK3rxDcGVB+iov8WvT2m7KW6L4xqPqlkt8qn7NIHslWIxjv78jN+sxI+HDxp7BR0sIwxgH0S2Somf8Tj9StIYVay3ooMKRs7GmKQOEikIBssq51BuLHLcajlSm6TuAAaVagk7oF+nPumy74Y//wDZY9CkNvKwS1ulItZUv/JS5z9ks2pjVmlLrDHCLAZI7hb/AGjY8LnkAOHPUnSWwuMeXKGqlEmHAYS/EnQUXI+EBXLUPE4rt3syhC7OhIHvZ2PU52H0ApE7lPVaa8QqN7YMTlwSrb+clUX8MoL/AIV03lC5FhxpT63DwH3SC6n+IPZS8JAHaxdU6te3yB+dT1UzomamtLvQKjBGHuwSArhkR8EUJzgIFJvwbIMpJBvZlK3t9/wNfMZC4VxcNid/ceXuFvIw3uA0nPqpuMhSRBEQTHmVSbkZ2zDTTU8CSfG3Wq0D5YZzN/XuR6Dn78KWWNkkel3C8/kvhf6o/wBuT/NXX/Ut1/u+yp/8RQ+X3WD7qYb7jDyd/wAakb2puoH+FybJRHj815/JPDfdf+01d/8AVd18vsuTY6L/AErX/I7D+Mv9pf8ALUv/AFdcTywfRR/8DSf3H6rF9zYOTSj1U/8ATXo7W1/9UYI9ig2Gm6OKlYHYBiZSs89gR3SwKkX4EW4HhVOpvZqPDJTtGeuOFPFbRCctlPtldMUWGlatvwgqDqqHj9umLE42GzGWTKsFhzKAKOOgzMW9TVB1Rpkczz4TeOj1wxzDgfF/vslM268+HKRxYlM8wKvHdgPdLNfQgqB9o249armmkZs13PKvC4wzbyR7N4W7Ye2EwuABVgrySshexe2Vbg5Li+mQAacb62IruGYRweucKKppXVFXsNgAccbH9Ulw8mHnLzYzEOspdbgITnUAAjujQkC19LcdaqxmOTL5HHKYTMqKfENO0acefVdW2HtOPERCSIHJcqtxa+XTQeHL0p1FI2RmWrKTxOifpfyqhvXi8ImJYTqtyAczRFvs6DNlPgdKQ1NJXzTvfTOwM+eDx5L3v6VjQ2Yb+2yU/wC09neEX/JP+SuBbL8eC7/7Lg1ts6gfRbI8ds86jsR5xhfqt6jkoL6NjqPzXbaq2HfLfot/+1cH9+L4D91V/wDjLz/a76qX8bb/ADas/wDaGD/rIPilRGju420vXYqqE9WrJMbhCbB4D+1HXLqW6tGSH/ddNnoncFq1bTiw80fZdpGtyCuUpcNysL631FuprqlNfDJrcxxHrlcVMVLURmMED2VfxO6UsKdtOQsI4suYtqQF7hHduSBc/uvrGtnkaNDfEeh2Wa/4xkbtT3ZaPJKdpPhyfzMbqBzZr3/Z1P8AerS2uCriZiocD7KlWPp3n+ECPdKsVyqS5DwhWbT8Tl3P2b/+G4fyb/3GpG7lPFZa8Qufe2f/ALrD/wCv/wDzeumcoXKsPwrQUH8pZ26fzlsq6c9EvbzurpgUDYXIbXeExxsTlDgqQsbEcHUkrfpcXuwr5ZU621pOOHZI6t9R6Fb2ANdTgeYwt+JTPgRkAF4hkBBAsFBJPhdQbefWoKZ7WXDxHPi8R+ew+6kmZqpsDywFRLV9WEceM4H0WAL3g4yVlDEXNlUsfBQW+nrUEslNEMv0j6LtjZpNm5P1TKDd7EtwiIHixC/Im/ypTUX21QjxOB9hlX47bWv4B+qYYfc6U+/Ii+V2P4Unn7X0Tf5cWfoFfj7P1B3e7HsmUG5sI993byso/E/Oks3a+V20cTR8kwisMbfieSp8WxsJCQ2RVNxYuxJuOFsx438KWS3S4VIIPHoMK5HRUkJ259Suh4CcPGreIH+tayjmEsLXBVXtw4hVDfSdMPi8JiGj7ozZ2AFzpZRfmRckA+BqKrIjka/CZ29jpoJIg7fbCjh3xIkOHjGFw796XEPo8gtrl10HW9uOvKvC50o8A0tPXqgNjpsGQ63Dho4B8yluJiOEJwuYphcRlDSPYsvAPw0UlbaEaBgeRqBzTCRGT4T1Vtr/AMUO/wD+4zp0I/wrCMH+TTQrBhkfDuLMyx53BJ0ZpCfd1Bv0PSrQjEbhob4UudK6ZjjI86h0zt8grcbAVbJDQqCpG1NoIGdpLhWPEglbdSB3dPvWrDyNlq53SQHcnYA4KY6o4mASDZQG2ZhZhm7ONgeaWHzQipRcrrRHBc4e6idR0VQMgBL8RufCfcZ1+DD56/OmlP20q48d40O+ypS9n4HfAcJZiNzph7kiN53Q/DUfOntP22pnfzWkfdLpez0zfgcCleI2HiU96Fv2bP8A4b08gv8AQTnwyD5pbJbKqPcsKXsLGx0PgePwpqyRjxlpB9lRcxzTuEw2JtiXCu7whAzLlzMoYrre6E8CefEGwuDYUjuzy14HorUFSYG5aN1PTfDG3703aKfeR1RkYHiGXKND0tSgPcCpG3KbO+/okuLnV3d1RY1ZiQikkKDwAJ/jwAFhWupNXdDUqtS4OkJaMeiiYnhVa4/APdX7T/MPsu4+zf8A8Nw/k3/uNSJ3KfKzV4hUf2u4Mvgg4v8AmpFYi19CCnp7wrpnKFyDDHiKd252xakl1ZhwcttM+iTjYq4burfD2QCSMjLLCx1B5shPHMNcptrexFrV8wveY67Emzhu13mPIrb20h9OC3cdQmGCw47EQHUW7LX+pQBbnwzKALj7w42pfOS2fvANhg+7j+yYsb4NJWextmYfs1cQrcj7QzHz71yLjW3K9uVcXC5V/elneO+ShhoqVg1FoUufamHjFmlRbcgQT/ZGvyqnFbLhVHZjj7rt9bSQ8uA9krxG90C+6HfyGUf3tflTmm7G1sn8whqXy9oKduzAXJViN8ZT7kaJ5kufwHyp7B2KpmbzPJx5YCWv7QzO2Y0Bb8HBj8QbvK0SHnoh9FWx9SfjVesqbNbRiFge8f7v0UsMNxq95HFrU9wOy4cOC/2rXaSQgt5ljwHlasrVXOqrXBjRhvk3YJ3DRw0zdROT5lWHYG0wNDfIx0JBGvjY8jVu11v4V5hlOx+3oiePvR3jVZCAa1oIKX7hRsRs5HZXYFivAEnKCDcHLwzeBIuOVGgE7roOI4S3+TodsR29pI5XV1U3BQhApsRwOg1B4VCYQdWrfKnFSWBpj8JAwT5qdsrZMWHXLEGC+Bd2A8gzG3pUjGNYMBRSyvkdqdyoW8mNbI0cTBXItmIuF8x1pNcrnFC4RHf+7HkpIqeR7dTTg9FR8NvBlbssUvZONM2pRuvQHx1HlVWfs/3rPxFA/WOcdR9FHHddLu6qhg+fQ+qyx+7sUnfhPZPxDJwPoPqPnUdFf56U91Ut1N8iN/kuqi1xzeOA6T6dUmxGKx+F95iyfeIDr6t7w9SK0kFNZLqMsGl3vg/slUstxoXeI5b9lIwu+X9ZF6of+k/vqpU9h8708n1U0PaM/wDcb9E4wm8WGf8ApMp8HGX5nT51nKvs1cKfcsyPMJtBeKWXbVg+qYPGkg1CuvWzClofV0xyC5p+atlkEo3AISnHbqJPpBGFkHAgEJ4kPyXz4+APA6K3VlwncO9y5vmf3Siut1K5mlmx9FXtp7o4qK4ZVYgXIjJY2PAi4Fxx4a6Gn0NRTRThk5x5HzSM2qRrNbd8JEQRodCOPK3mK2kb2uaC3hKXtcD4uVHxLfvpXcXbhqdWlmGly+g91MB2GDgiPFYxmsb95hmfX9Ymk55TdNq8Qom1sAk8MkL+66lT0vzHUHX0oQvnjaOBkw0zRSCzobHS1xyI6EairlPN3b9QUFRD30elAN60EcjXjIKy8sTo3YcFZN05wSYs5R/eRhwPBWVlOjD3LX142I0rFdqqZzCJg3U07EdR6g9FpLFMHAxE4PITfDRSLPJHKt0lXOXW4XKtxIACcyEsyki5942Phm3zRSUzXxnxMOMdcngnzwnjA9sh1cFV7eRHV9c3e7z6nKC7O0aWvxEam5Hh1Favs5JFJlrgD5HrtyfqkF6bI3DgT6/NJrVsNmrNppsvYM0+oGVPvtcD9kcW+lI7n2hpKEYJ1O8gmdJap6g5AwPNXDZe78MNjbO/3mH+EcB9etfO7j2hrK06WkhvkFqqS1U9MMnc+ZWrae8kcZyRjtZCbALwv+tzPQfKpqDs3PM3vajwM5yeVHVXeNh0Q+J3os8Ds6RyJMSczDVYx7idbDRm6m9qhr7hTwtMFCMN6u6uUlNSyy/xao58h0H+V7jtplpBh4DeQ++3ERqPeJvoW5W8Tr4V5S2vRAayrHh6Dq4/sietL5BTw89fROU3iGGyI7ghjYB2AIAGpLHlpz52HOrFrqax4cWglg39vQL2pbCzAJwSmkO+OEYqokBZuAUhyban3b8qesrD3ZkkY5oHOQqpDdWlrgStuN3pw0Vs7WzGy30BIF+JsB61HHcmTahAC7AzsunxmPGvbKXS70pIcsckevJXVmPw/ClNdX12PDEWt9QrEEcB2LslUQ7QmweIZJGaSNjmu2rWP2gfEcCOdORbqe80IlhAEg2Pv6pR+Lmt9QWPOWH/AHZP8Zg4cVEDcEEdxxxB/jiDWWpK2ss9RpIxjkdCnU9PBXxam49D5KpCbE4GTJe68QDcow6eB8bWNbwQW++w6wMO6+YKzHeVVtkwePsVZtlbwwzd09xz9liLHorcD5celY259nKugOtm7fMc/PC0FHdoKkaXbHyWjae6sT3Mf5tvAar/AGeXp8Ks23tZU0+I5xqb9woquxxS+KPYqpbS2XLAbSLpyYaqfI/gbGvoNvvFLWtzC7fy6rLVVBPTnDx8+iiRzul2RmU+Kkj6VZq6aGWMl7Q7bqoYJXseNJI9lMTa2IVVQTzBU90CRwBrfSx8SayO7dhspHVk5O7imL734kwmNzna4ySmwdB9oE274Itx189LT09MyqkDJG5AVuG5zCMjO/mkmJxLuczsWPixua1UUMdOzEYwAqDpJJ3DUckqbuZso4vGxoRdFOd/1U5HzNh60iqJdby5aanj7qMNXfxVRTL2hCKEKie1uDD/AJKJHQdtmCRNzFzmYHXUZQ2hvXTOV6FyLDjiadW5mxcUkur84ap2AxRicPYEC4ZW4Mp0Ibpb6Cu7pSNqKYtJwRkg+RVS31BhmDgrdNiIRr2kkRjId4XZmLKO83Zgk5ha/wDNkg6i2unzZkcxcWloIOQHDofX/K2neM88Y3wstu7PaVO6LG6ufHO7Ig88seYfC1SWqs/CzAj2Hs3n6leVdMKiPT81t2Ru5DGA7fnG4gn3Qf0V/ff0ry7dp6ydxjZ4B9yq1DZoYfEfEVL2rtuGDRjmf7i2J9eS+tL7bYKyvdqAw3qSrNXcoKUYzv5BVTEbTxOLbs0FlP2F4W8Xbw+XSt1BardZoe+mILvXr7LNyVtXcH6I+PL91ZN39kxQlgDmlWwY2tbMAQFB+z152PhYZC9XaqrsEDDDuAP95T630ENN1y7ql+8O8lrxQHvcGccuidevwprYezW34qr2byB+6o3O7bmGHnzSjCYuSBWQL2cjauxF36AA6AcfG9+NaV1uprm8SOfljeAOPmlBq5aJpaGkOPJKis5JJJJJ4km5PmTxrQw00MTdDGgD2SWWokldqe7JU/d1b4qK/LMf7jD8TWc7XHRbzj2Tns+NVVunG+fuxebfQVmOw29TJnyTrtNtC33VWr6a+JjhhwWJa9zTkFbsXiZJECM2ax7pbVhfSwbjY6aG/AUrbb6ejkdNGQ3PI6H1TFtXLUNEbxqPQ9QjYu2JMOx0JUnvodOGhI8D/BqldrNBdItWwd0P+9Fboq6SikxyOoV0xMuHngLMQ0Z16g8hYah7m1uvWvm8MVdbazS0YcPoR6rWvdTVkGScj75VK21sZ8O2veQnut+DeDfWvpNovcNfHjYOHI/bzWPrrdJSuzyOh/dSNk7ySxWVj2ieDHUfqt+B+VVbr2XpqwGSMaXenB91YorxNT+F3iHryrhs/akOIXukHTvIw19RzHUXFfPKy1VttfuDt1HC1VPWU9Y3A+h5SvH7qxyuVg7sts2S4y2Jtchj3RcW0+FaixXytkGmUamefVKK+1wA5jOHeSX7X3IxOHw5nd42ynvKhY5VJsGzEDNra4sLdab91HLLhpxlKJbfpZrJVYtWhpqRkDcNSxzugW7ZezpMVOmHjyhnvbMSBoCxJPkDVCundq08BPLdTsDO8HK7duhu0mChyCzSHWSS1ix5eQA0A/fSonKaJ9XiEUIRQhc99s6n8mgPhN9Uau2coXK8Pwp9bzliz90GJQVtFXylgVw2AXkw4SWMTR2KhSAGC8BbNoy8rggixGulfML5FHBWExP0E7nq0/TqtxbHOlpxr38v9/VM8PNlDZlZSuaTvi9wqgAkgkH0PLrSyUB7g9hBzhu3nnJ9kybsMJTtqSeGICNmAyxhrWzElWzkMOHuAm1uLU3tX4SaqzO0Hc4+RH7pZchMIP4RSLZOypMQ1luBfvOb2Hrzbp9K19zu9NbY8HnoB+yzVHQy1km3HUq+7O2dHAlkFubMbXNubH+AK+V19xqblNl2+eAtpS0kNJHgfM+aqO3tprJO3YsR3MhYGwax1811t1tX0Ls9ZnRUwbUtBOcgeSy10uIfLqhOANj6rZuhs0M/ava0Zsovxa3HyH1I8DUfay4PhhFNGDl3JHkpLJSMfJ3riMBSt99oLZYlALDvFuajkAevPp50t7H0EwLqlxIA2A81bvtTGdMIGT1Vfr6QDkLFuGDhNd1lviV6Kx+VvxrJds3aaD3cAtB2bGar5Jlvo/8ANL4lz8Mv7/lSDsK09/I70A+6a9pz/BaFWK+nFYkJ3ufikErowGY6ox6DvL08fQ9KwfbCCofEJYyS0bEfqtbYZYY3mMjc8LXvhs0K3bJwc2YDk3I+v18667KXN74vw0oORwfRc3uiax/ex8HlJsLOYijWzWdWykm3d1F+o8etaSuohURFvDiMZ8kqpakxPDhuBv7roOExUWJiJFmUizKeI6EePX1FfIqulq7TU+RHB81t4JoK2HA3B5Cp28GwGgu6XaLx5rfk3Tr/AAfodi7RsrWiOXaT8/ZZW5Wl9MS9m7fySVHIIIJBHAgkEeRHCtLLHHM3S8Aj1Shj3MOocrPF4hpiWlOdtBc24AWH8dayM9NHTyGOMYHkrFTUySuDnHomGwNsPhWGUBoz3XhY2icNxDKQQPHNa/pe/EerPhXdLVPa7BOR6qBiosrEd0jlkbOtr6ZW5jlc66a61raSXvIgTnPrsoKhuJDx8lN3PlK7RwxU2PaAejaEfA2pTccd4U9toPcDK7/S5X0UIRQhFCEi322ScTg5YlF3tmT9ZdQPXUetejlC4HA2tqa0Eml+k9UrukWpmodFvpyd0gCb7J2q4mQu7lfdADEZL6Aqui2GmhFrDxArNXq0xOpnGJoDuTtsf9807tle8TBrySDsrdtGMshtK4sDcOuVSD72Z8gK6XF72HHWwr5/SkMfgsbv5H9CSthICRsVis6TmJ1sytMx9I0db/qlrH9oeNSaH02oHkNH1JUeWyY8s/ojAyrAqobLEsaEM3iwbix4num/PvLXlXC6ty4ZL8kfIYXsemAYxgKt7w7wGa6JpFfyL28fBenx8BtrB2bZSATTDLyPosnc7s6fMbNm/mkkPvD41rBs4JKf5ZUxUU6vwAufHoBfmTYdL35VXrHloDWDLjx+66pRkkuOAFGwcSl9RZdWa3MKLkeZtlHmKjqMww4Z8Rwp4j3kuXcD7LcvAUxZ8O/olrz4inW6SXxN/CNv8SCsZ23fiiA83LR9mRmocfRSt9/eg/4n0SlPYX45Ff7Tfy2quCvpaxSisSGv1uLi48dQdCOVjVN8Ye1zHJg15aWuCbY3DR5UmiFlkuCunccalQeNjqRfXQ8rWS2ioe2d1HMBqbwfMK7cIWmMVEXB5HkUsxXEev4VoH/EEsj/AJZ+S2bNx7wuHQ9COTDwNL7lbYa+ExyD2PUK1SVb6aTWwroGydppiEuNDwdDrb96nka+S3O1z22f06FbijrYqyL18lU8XhsCuJdHaZYxpeIIwV+Y72uQaCwBN7jrW4tl4qjTt73GVmKyGkZUFuTj0U7bW7GFXCHFYTEvLlZVcHJYZiBqoUMrXINjyNXQ4VUoEi8mpYRFqYc4VStTqno44BsMlKHPzxsg1aJDRleNBccKxezLZhnxyyH3YR2jefBBx8df2etZiok1uLlrYYxHGGruFV1IihCKEIoQg0IXHvaZuoYHOKiA7J276j7Dnn+qx+BPWpY34IXjmhw0lUyN7itHTTiRmeqy1VTmF+OnRZip3NDhgqs0kHIVz3Y2szrkeZc40AddSBws+YZtPEX0r5j2gtApptccfh58J/wVt7TXd9GGudupkyCIO4YEAMxWNCSpYd4gLc6kLx4W86XxyGdoY5uDkbk8ge+Ey0BhyFOnjVjwBF4wB+q2bTxGU/C9U43vhG2x8R/T8125ofseNlRdp7JMa51BKBpATxCiOQRr11vb9k19CtN6Eh7qU74bj5hZK4Wstb3kY6n80FI1jQKczklnNtBp3VB521vbS56CmtJ38lW6R4wwbNHU+qW1PdMgEbd3HcqFiV4Hzpm/YjKpx7tI6rLDqRc+PL56/wAcq57sPIJ6L1zyxukdeVtqxlVcJ3uh/wB4b/0m/wAaViO3P/xGf+y03Zj+c72/VSN9/eg/4n0WlnYb+ZJ8ld7Tfy2quWr6UDlYzC1Tx31FRyNzuFNE7bSVlhcSwUx2upIY35EAi46kG1UnUzH1LKgcjZXO9cyF0Z4K9kjUg3JBA7ttQdRcH0v8KnnMoe0s3HVQU4YWODjueFEFdh45C8LCFIwc0sbCSPMGHAgEg+fIiqVbFTVMZjkwVapu/ieHsBC0Z7+d9b8b879b1mHRaDpUEoeXEuG5KmYLaTxRzRqoKzqFYm/BGJBXxOpHqav26me+TV0CnilMUbmkcqDWnVJEMDyyLDGLu5CgeJPXkKU19TvoHzT220v/AHHBdy3M3aXBQZLhpGOaR7WufAfojl6nnSU7purBQhFCEUIRQhFCFox2ESWN43GZHUqw8QRY0IXBN6thPgcQYzcobmNvvL1/SHA/61cppzG7Uq9TTidmDyl4NaJjw8agsvJGWOLSt2FnZGDLxHiAR8DUFXSsqYzG/hSU07oHh7eivOyturKi55Yo34Fb2N/0QxHx1425V8quVofRzluhzh0PT6hbujrGVEeQR6hbkiEbB0WR1Z8zm4PBCoZRe9rWFlBGlx1gD++aY5CGuxgD5536KcjQchasEwkhjzi2dLsvHWRi0g9MripXsfHM5zeQdvYDA/NctIfGMj/So228AgiPZYW7nS4UErfie6Sb8qvWmuldVA1FT4OeTv6fNLq+iY2E9zEM+eBsqVKpU2bMp8Gup+Br6PHUQSN1McD81knRzMwHAj5K/wCythxLDH2kal8oLFhc3OtiT4cPSvld0vdW+sf3LyG5wMFbOit8DKdpkYCcZOyo20JFaRygspY5QLgAXsNPKvqFvie2mYJSS7AyT5rHVUoMztAwMqwbhqc8p8FUcb8Sf3fKsl24IEUbfX9E77OEmR5PkPzW3f4/zP7Z/wANV+w7c96fZTdo34LMJJu6qnERq4zK1wQ2ouQcvztWo7Qd4yhe+FxDgk1rLXVDWyAEHZWjeLY8Qw7tHGqsoDXXQ2B73DpesJ2fvNQ6tYyZ5LSccrSXS3wtp3PjYAR6KjZtbZjc8rm/pX098kLAS4j6rHsbK/ZoyrtsPBxvCvaYazjQ3TLe3Brta9x87181u9XPHVO7mo8PTcnH0WvoKWF8IMsQ1ewSDejZ6xzAoLK4vb7pBsy8eF9fDU2pzbrpJJS6HnLgcZ8wRyk13gFPJ4eDwpGx978XhwipJmjSw7NlUjKOQNrjzv4ceFdiQ53VKC4SMIDtwt/tGVTjM4H85DHJ1711162UU/trGvZlwUtycRICPJVimwaBwlRcTysZZLDrVWrqBG3blXqKlMz8ngLqPss3X7JPyuUd+RfzY5qh1JI8W08h5ms692StI0YGAuh1wvUUIRQhFCEUIRQhFCFX99d31xmGZP6Re9GfBgOBNvdPA/6V604KFwePMrFGBBBsQRYgjQgim9BUaToPHRKrlTBze8HIW6nCQKVgMfJC2eNrHgb6gjwI5j4elL7jb4q2LQ8e3mFco6t9O/U0+6tq7z4cqC7OTbVMltfiR6Fjxr56/s1XRvxGwD1zla0XmlLcl3ywpOGmgVkLdnCxUPkuqDvEkXGgLDiTyNrc71aiKqETgwF2+M4+vsrTKiIkaiAccei27wNP2cbYW7P2qaC2VkzWcMxvZbX1FzppSqhiYHuFQMDB58/T1VuR2WgsKhybRlWYYeUxXZM4dxlivmsI41OsjDibsORtrpcjhhMXfR6hjoDkn1PkonE50u6+ajT7wxx9qrRh1jVbvh2PZlnbJkY3ARuZuSApuanFJI7S5r8Z6OG4x1HmvC9oyCMpdtWDDwgFsMLk2CpiWDMfBBMqq/kjE6iwNO4a+4afDKfct2+36pa+3UvJZ91O2RjcLGkk0PbCIhBnIU531AjjRhmZwTY20ubcjS6vkq6stinLXO8vIeZIKs0tNDT5dECAfVY7VxuCm7FpppVDCSxIRAnZWMiyd3usNNKKCeuodbadreRnnf2XlXTQVJb3udljLDhMOsUpjxBZmui6CQhRnLFQRYBRe2h1Atc2qd9zuNUXwl7cddtvbhRR26kiw8NOUx2ptqJEhdV7aKdsgbPIU1BIBVVdjexFgt76UppKeVz3Bx0Ob5AZ/RMXubp4yEv2BvC7zRp2MUMMpdY2QHvtEdV+zkJBJGZQdCLc6sV1Hpic7W5zhjO/moonAOwGgKVhdtYsyykYcyQrK0YCgI4VNM4LsBJc37oAPMXqtJQUoibl+lxHn+3ClErw47bLHfPCBo1mGhH2ToSGIB0PMaVe7P6zL+GPHQ9EpvcDJItedwqbc9PrW3jtBPxlZDDGrxEA4Dr606hhbE3S1ePkLzuvWawr2SQRtLivYYnSPDQrP7Od2PyubtpR+ZiYaWBDuNQvkNCfMVm55jI4krVQxNiYGtXagKrqVe0IRQhFCEUIRQhFCEUIRQhcb9rOxhFiVnUWWYHNYaB14n9oWPofGpY3kYIXhaHAgqoKbgGtPE/WwOWSnZ3by1e1IoUUYB5XoOCs5JSxLMSSdSTqTXDImMbpaMBdmRxOSV5DIyG6MVPipKn4ioJaKnl2ewH3UjKqVnwuI+ae7B2nO80cTSsUYkMGyvewJGrAnjWbvNopKelfPEzDh5ZTi23KoknbG92QVN2pvM0chjiCOijKcwNr87ZSBblw1saW27sw2pgbPKS1x43/AHV2rvncyFkYyFCw+8iIbrg4QfFLRn45Casy9kpHDHfnHqoW9oW9Y/umWxXgxNl/JY17Ed1C5MYz3uVTLlJ46lbi+lI7rb6i27ulJDzzjf6prQ18dZkacEb8qPtT8kw+IDfkqmQDN3HYIMymM3jsEuV0Pd1FulT223V1fTkxy+H1G/1UdbcYKaUMc3f0KhR7WwqFWTB3ZQVQPKzKgJzEIrBggv8AdA8OFMj2ZrXgtfMADzgYKom/QciM/VN9g4mHEF17GKM5hKUIMgYi3fHugMDblfhqeSu62uag7tz5C4HbI2wPVXqG4sqdQDcEJL/Kee5ZVijLWLFIxmPmSTf1rRQ9lqd0be8e4jHGdknlv02TpACiT7ZxL+9O/oQn+ACmUHZ+gh3EYz6qjJdqp+xeVB5k8zxPM+ZpqyGOMAMbjCpOle/OolFSqJFCFngcG+InjgT3nbKPqSegAJ9DSWvnydI4C0Ftp9LNZ5K+gdjbMjw0KQxjuoLdT4k9SdaU5yminUIRQhFCEUIRQhFCEUIRQhFCFVPadhBJs+U2JMZVxbxDAH0ylq9byhcSikAFPKWqjjjAcUjrKOWSUuaFl2y1MK+HzVY22oH9Ky7RfGpRVRH+pRminHLVkKma4O4Krujc3kIrpcLbhsQyMGU2YXsfC4I+NjUM8DJ2aHjZSxSuidqbytVStAAwFGTk5KK9Xid7oYnJiBc2DKVPwzC/w+dZvtTRmpothuCE3stQIqjfghLtp4syyvJ943HlwUfACmlspBS0rIgOBuqVZOZpnP8AVRaY5KqrdhMU0bh0NmXgfr6VWqaaOoj7uQZClhmdE7U1aanaMDCjJzuivV4vaF7hFqELxtK4e7S0ldxt1OA9V0D2ObJBMuKYag9knwDP9V+JrLSuJdla5g0tAC6lUa6RQhFCEUIRQhFCEUIRQhFCEUIUXamCWeGSFiQsiMhItcBhlJFwRfXwoQqV/wBk+D/rsT/ai/8AjrrWUIPsnwf9diP7UX/x0d4UKDifZIuvZ4ogcg8YJ9WDDn4CvdaFXNqezrHQgsoWUDX82Tm9FIBPpXbZSOCuXMa7kKsSZ0JV1ZWHFWBVh5g6ir8Ve9mzt0vntsb92bFZrIDTOOqjf1SiWilj6LOptbf9Kg7t3kfosSwHOuHTMbyQu2U8juAfotbYm3CqUtezgDITGG1vxlxwVksoP+tWIqyN/oqk1DNH02WyrIcDwqpYRyF5RkLwNKxaUCq8lXGzqrUNFLIeMIw0U0ptFG7nwRGc/BQaWy3B5+HZNorZG34t08w2420nIHYFb83dAPWxJ+VVnVbz/UrQpIRw0Kb/ANm20f8Ayv8Amf6Vz+Kf5ldfhov7QoU+420lJX8nLDxV4yD5XYGvfxUhGMrwUsWc4XU/Z5sx8PgY45UySZnLg2vq5ykkXB7uX5VVduVOrLXiEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhFCEUIRQhLNtbAw+KXLPGG8G4MPJhqKMkIXPdqeyhwScPOCNbLKLHoMy6HzsK7D0JSPZhj/APyf+Yf8tdd4jATnZ3smN/z+I08Il1/tPw+BrwyIV32Vung4EypAh8WcB2PmWrjKEk257NcJMS8RaBz9yxQk+KH14Eca9DihU/Fey/Gqx7NonXkcxQ+oI4+tSCZw4K4MbTyFCw/s62i97xKljbvyLr1GW+lemZx5K9ETBwB9Fa9geyyNDmxUnaW+wl1T9pvePkLetRl+V0ug4LBxxIEjRUUcFUAD5Vwhb6EIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihCKEIoQihC//Z" alt="Logo SMK">
+                </div>
+                <div class="school-name">
+                    SMK MUHAMMADIYAH 1 YOGYAKARTA
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#brosur">Brosur SPMB</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#mug">Mug</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#kesimpulan">Kesimpulan</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#referensi">Referensi</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#dokumentasi">Dokumentasi</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Jumbotron -->
+    <section id="home" class="jumbotron">
+        <div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="C:\Users\Asus\Downloads\acc\foto mug 2 .jpeg" alt="Slide 1">
+                    <div class="carousel-caption">
+                        <h1>PRESENTASI KARYA DESAIN</h1>
+                        <p class="lead">Desain Komunikasi Visual - SMK Muhammadiyah 1 Yogyakarta</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="C:\Users\Asus\Downloads\acc\brosur acc_Fachri.jpg" alt="Slide 2">
+                    <div class="carousel-caption">
+                        <h1>BROSUR SPMB</h1>
+                        <p class="lead">Desain Modern & Profesional</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="C:\Users\Asus\Downloads\acc\mug acc kumara .jpg" alt="Slide 3">
+                    <div class="carousel-caption">
+                        <h1>DESAIN MUG</h1>
+                        <p class="lead">Kreativitas Anak DKV</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="C:\Users\Asus\Downloads\desain mug baru acc.jpg" alt="Slide 4">
+                    <div class="carousel-caption">
+                        <h1>KARYA KREATIF</h1>
+                        <p class="lead">Hasil Pembelajaran DKV</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="c:\Users\Asus\Downloads\WhatsApp Image 2025-11-23 at 13.17.40.jpeg" alt="Slide 5">
+                    <div class="carousel-caption">
+                        <h1>INOVASI DESAIN</h1>
+                        <p class="lead">Masa Depan Desain Indonesia</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Brosur SPMB Section -->
+    <section id="brosur">
+        <div class="container-fluid p-0">
+            <h2 class="section-title">BROSUR SPMB</h2>
+            
+            <!-- Carousel Brosur -->
+            <div id="brosurCarousel" class="carousel slide product-carousel mb-5" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#brosurCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#brosurCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#brosurCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#brosurCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#brosurCarousel" data-bs-slide-to="4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Brosur+SPMB+1" alt="Brosur 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/3b82f6/ffffff?text=Brosur+SPMB+2" alt="Brosur 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Brosur+SPMB+3" alt="Brosur 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/3b82f6/ffffff?text=Brosur+SPMB+4" alt="Brosur 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Brosur+SPMB+5" alt="Brosur 5">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#brosurCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#brosurCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <!-- Detail Brosur -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-palette"></i> Prinsip Desain</h3>
+                            <p>Desain brosur SPMB menggunakan prinsip kesederhanaan, keseimbangan, dan hierarki visual untuk memastikan informasi mudah dipahami dan menarik perhatian calon siswa.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-fill-drip"></i> Warna & Tone</h3>
+                            <p>Menggunakan tone warna biru (#1e40af, #3b82f6) sebagai warna utama yang melambangkan profesionalitas dan kepercayaan, dikombinasikan dengan gold (#ffd700) untuk aksen premium.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-lightbulb"></i> Filosofi Warna</h3>
+                            <p>Biru melambangkan kepercayaan, stabilitas, dan profesionalisme. Gold merepresentasikan prestasi dan keunggulan. Putih memberikan kesan bersih dan modern.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-font"></i> Pemilihan Font</h3>
+                            <p>Menggunakan font sans-serif modern seperti Segoe UI dan Helvetica untuk keterbacaan optimal dan kesan profesional yang contemporary.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-quote-left"></i> Filosofi Font</h3>
+                            <p>Font sans-serif dipilih untuk memberikan kesan modern, bersih, dan mudah dibaca. Mencerminkan institusi pendidikan yang up-to-date dan profesional.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-tools"></i> Teknik yang Digunakan</h3>
+                            <p>Teknik layout grid system, typography hierarchy, color blocking, dan penggunaan white space untuk menciptakan desain yang seimbang dan eye-catching.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-laptop-code"></i> Software</h3>
+                            <p>CorelDraw digunakan sebagai software utama dalam pembuatan desain brosur SPMB dengan berbagai fitur vector editing yang powerful.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-tasks"></i> Langkah Kerja</h3>
+                            <p>1) Riset & konsep, 2) Pembuatan sketsa, 3) Digitalisasi di CorelDraw, 4) Pemilihan warna & font, 5) Layout arrangement, 6) Revisi, 7) Finalisasi & export.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Kendala</h3>
+                            <p>Kendala utama dalam pembuatan adalah pemilihan warna yang tepat agar tidak terlalu ramai dan pemilihan font yang sesuai dengan karakter institusi.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-check-circle"></i> Solusi</h3>
+                            <p>Mengatasi kendala dengan mencari referensi warna dan font dari berbagai sumber seperti Pinterest, Behance, dan Dribbble untuk inspirasi desain terbaik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mug Section -->
+    <section id="mug" style="background: var(--light-gray);">
+        <div class="container-fluid p-0">
+            <h2 class="section-title">DESAIN MUG</h2>
+            
+            <!-- Carousel Mug -->
+            <div id="mugCarousel" class="carousel slide product-carousel mb-5" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#mugCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#mugCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#mugCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#mugCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#mugCarousel" data-bs-slide-to="4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://via.placeholder.com/1920x1080/fbbf24/000000?text=Desain+Mug+1" alt="Mug 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/ffd700/000000?text=Desain+Mug+2" alt="Mug 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/fbbf24/000000?text=Desain+Mug+3" alt="Mug 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/ffd700/000000?text=Desain+Mug+4" alt="Mug 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/fbbf24/000000?text=Desain+Mug+5" alt="Mug 5">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#mugCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mugCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <!-- Detail Mug -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-palette"></i> Prinsip Desain</h3>
+                            <p>Desain mug menggunakan prinsip kesatuan, repetisi, dan kontras untuk menciptakan visual yang menarik dan memorable pada permukaan cylindrical.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-fill-drip"></i> Warna & Tone</h3>
+                            <p>Menggunakan kombinasi gold (#ffd700, #fbbf24) dengan biru (#1e40af) dan putih untuk menciptakan desain yang elegan dan eye-catching.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-lightbulb"></i> Filosofi Warna</h3>
+                            <p>Gold melambangkan prestasi, kemewahan, dan kualitas premium. Dikombinasikan dengan biru untuk balance antara elegance dan trust.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-font"></i> Pemilihan Font</h3>
+                            <p>Menggunakan kombinasi script font untuk kesan elegant dan sans-serif untuk keterbacaan informasi penting pada desain mug.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-quote-left"></i> Filosofi Font</h3>
+                            <p>Script font memberikan kesan personal dan artistic, sementara sans-serif memastikan informasi tetap mudah dibaca pada berbagai ukuran mug.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-tools"></i> Teknik yang Digunakan</h3>
+                            <p>Teknik wrapping design, mockup visualization, color grading, dan element balancing untuk menciptakan desain yang sesuai dengan bentuk 3D mug.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-laptop-code"></i> Software</h3>
+                            <p>Menggunakan Adobe Photoshop untuk editing dan mockup, CorelDraw untuk vector design, dan Adobe Illustrator untuk finalisasi elemen desain.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-tasks"></i> Langkah Kerja</h3>
+                            <p>1) Brainstorming konsep, 2) Sketching design, 3) Digitalisasi vector, 4) Color selection, 5) Mockup creation, 6) Testing print, 7) Final adjustment.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Kendala</h3>
+                            <p>Kendala utama adalah kebingungan dalam membuat elemen desain yang sesuai dengan bentuk cylindrical mug dan memastikan visual tetap menarik saat di-wrap.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="detail-card">
+                            <h3><i class="fas fa-check-circle"></i> Solusi</h3>
+                            <p>Mengatasi kendala dengan mencari referensi elemen desain dari berbagai sumber seperti Behance, Pinterest, dan menggunakan template mockup untuk preview hasil akhir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kesimpulan Section -->
+    <section id="kesimpulan">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">KESIMPULAN</h2>
+            <div class="row justify-content-center animate-on-scroll">
+                <div class="col-lg-10">
+                    <img src="https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Kesimpulan+Presentasi+Karya" alt="Kesimpulan" class="kesimpulan-img">
+                    <div class="detail-card mt-4">
+                        <h3><i class="fas fa-check-double"></i> Kesimpulan Pembelajaran</h3>
+                        <p style="font-size: 1.1rem; line-height: 2;">
+                            kesimulannya adalah kita dapat mengetahui cara mendesain, cara menempatkan elemen yang ingin digunakan, dapat mengetahui prinsip prinsip desain
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referensi Section -->
+    <section id="referensi">
+        <div class="container-fluid p-0">
+            <h2 class="section-title">REFERENSI</h2>
+            
+            <div id="referensiCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#referensiCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#referensiCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#referensiCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#referensiCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#referensiCarousel" data-bs-slide-to="4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="C:\Users\Asus\Downloads\mug acc.jpg" alt="Referensi 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Referensi+2" alt="Referensi 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/3b82f6/ffffff?text=Referensi+3" alt="Referensi 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/1e40af/ffffff?text=Referensi+4" alt="Referensi 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1920x1080/3b82f6/ffffff?text=Referensi+5" alt="Referensi 5">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#referensiCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#referensiCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thank You Section -->
+    <section id="thanks">
+        <div class="thanks-content">
+            <h2>TERIMA KASIH</h2>
+            <p>Atas Perhatian dan Waktu yang Telah Diberikan</p>
+            <p style="font-size: 1.5rem; margin-top: 30px;">
+                <i class="fas fa-users"></i> Kelompok Desain Komunikasi Visual<br>
+                SMK Muhammadiyah 1 Yogyakarta
+            </p>
+        </div>
+    </section>
+
+    <!-- Dokumentasi Section -->
+    <section id="dokumentasi" style="background: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">DOKUMENTASI PROSES PEMBUATAN</h2>
+            
+            <div class="doc-gallery">
+                <div class="doc-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/1e40af/ffffff?text=Dokumentasi+1" alt="Dokumentasi 1">
+                </div>
+                <div class="doc-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/3b82f6/ffffff?text=Dokumentasi+2" alt="Dokumentasi 2">
+                </div>
+                <div class="doc-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/fbbf24/000000?text=Dokumentasi+3" alt="Dokumentasi 3">
+                </div>
+                <div class="doc-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/1e40af/ffffff?text=Dokumentasi+4" alt="Dokumentasi 4">
+                </div>
+                <div class="doc-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/3b82f6/ffffff?text=Dokumentasi+5" alt="Dokumentasi 5">
+                </div>
+                <div class="doc-item animate-on-scroll">
+                    <img src="https://via.placeholder.com/600x400/fbbf24/000000?text=Dokumentasi+6" alt="Dokumentasi 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak">
+        <div class="container">
+            <h2 class="section-title">KONTAK PERSON KELOMPOK</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="contact-card text-center">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Ketua Kelompok</h4>
+                        <p><strong>Nama:</strong> [Nama Ketua]</p>
+                        <p><i class="fas fa-phone"></i> +62 xxx-xxxx-xxxx</p>
+                        <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="contact-card text-center">
+                        <i class="fas fa-users"></i>
+                        <h4>Anggota 1</h4>
+                        <p><strong>Nama:</strong> [Nama Anggota 1]</p>
+                        <p><i class="fas fa-phone"></i> +62 xxx-xxxx-xxxx</p>
+                        <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-on-scroll">
+                    <div class="contact-card text-center">
+                        <i class="fas fa-user-friends"></i>
+                        <h4>Anggota 2</h4>
+                        <p><strong>Nama:</strong> [Nama Anggota 2]</p>
+                        <p><i class="fas fa-phone"></i> +62 xxx-xxxx-xxxx</p>
+                        <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SMK MUHAMMADIYAH 1 YOGYAKARTA</h4>
+                    <p><strong>Jurusan:</strong> Desain Komunikasi Visual</p>
+                    <p style="margin-top: 20px;">
+                        <i class="fas fa-map-marker-alt"></i><br>
+                        Jl. Nitikan Baru No.48, Sorosutan<br>
+                        Kec. Umbulharjo<br>
+                        Kota Yogyakarta<br>
+                        Daerah Istimewa Yogyakarta 55162
+                    </p>
+                    <p style="margin-top: 20px;">
+                        <i class="fas fa-phone"></i> (0274) 123456<br>
+                        <i class="fas fa-envelope"></i> info@smkmuh1yk.sch.id
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Lokasi Kami</h4>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.9896866597956!2d110.38615431477748!3d-7.801886194384089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787e3b00001%3A0x1234567890abcdef!2sJl.%20Nitikan%20Baru%20No.48%2C%20Sorosutan%2C%20Kec.%20Umbulharjo%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 SMK Muhammadiyah 1 Yogyakarta - Desain Komunikasi Visual. All Rights Reserved.</p>
+                <p style="margin-top: 10px;">
+                    <i class="fas fa-heart" style="color: var(--gold);"></i> Made with passion by DKV Students
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Auto-play carousels with custom interval
+        const carousels = document.querySelectorAll('.carousel');
+        carousels.forEach(carousel => {
+            new bootstrap.Carousel(carousel, {
+                interval: 4000,
+                wrap: true
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add parallax effect to jumbotron
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.jumbotron');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
